@@ -66,6 +66,7 @@ window.onload = function() {
 
         alienImg = new Image();
         alienImg.src = "./alien.png";
+        createAliens();
 
         requestAnimationFrame(update);
         document.addEventListener("keydown", moveShip);
@@ -82,7 +83,13 @@ window.onload = function() {
         //ship
         context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
 
+        //alien
+
+        for(let i = 0; alienArray.length; i++) {
+            let alien = alienArray[i];
         }
+
+     }
 
         function moveShip(e){
             if(e.code == "ArrowLeft" && ship.x - shipVelocityX >= 0){
@@ -101,8 +108,15 @@ window.onload = function() {
                         x : alienX + c*alienWidth,
                         y : alienY + r*alienHeight,
                         width : alienWidth,
-                        height : alienHeight
+                        height : alienHeight,
+                        alive : true
                     }
+
+                    alienArray.push(alien);
+
+
                 }
             }
+
+            alienCount = alienArray.length; 
         }
